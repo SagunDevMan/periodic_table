@@ -32,7 +32,7 @@ question = 0
 # Run while exit_value is 0. If it is anything other than 0, then close the program
 while exit_value == 0:
     print("-" * 50)
-    print("Welcome to Sagun's Periodic Table Question")
+    print("Welcome to Sagun's Periodic Table Program")
     print("-" * 50)
     print("""1. Start\n2. Instructions\n3. Exit""")
     menu_selection = int(input("Choose your menu selection (1 - 3): "))
