@@ -1,9 +1,8 @@
+# Table for periodic elements
+
+
 def periodic_table(answer):
     return table[answer]
-
-
-
-
 
 
 table = {
