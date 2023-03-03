@@ -1,4 +1,4 @@
-def peroidic_table(answer):
+def periodic_table(answer):
     return table[answer]
 
 

@@ -1,11 +1,11 @@
 #------------------------------------------
-# Program: To make a peroidic table program that randomly generates a peroidic table
+# Program: To make a peroidic table program that randomly generates a periodic table element
 # Author: SD
 # Date: 3/3/2023
 #------------------------------------------
 '''
-    Problem: To make a peroidic table program
-    Input: Peroidic Table Answer
+    Problem: To make a periodic table program
+    Input: Periodic Table Answer
     Process: Compute whether the answer is correct or not
     Output: Whether the answer is correct or not
     Psuedocode:
@@ -22,13 +22,13 @@
 '''
 # Program starts here
 import random
-from table import peroidic_table
+from table import periodic_table
 
 exit = 0
 # Input
 while exit == 0:
     print("-" * 50)
-    print("Welcome to Sagun's Peroidic Table Question")
+    print("Welcome to Sagun's Periodic Table Question")
     print("-" * 50)
     print("""1. Start\n2. Instructions\n3. Exit""")
     menu_selection = int(input("Choose your menu selection (1 - 3): "))
@@ -37,7 +37,7 @@ while exit == 0:
 # Procress
     if menu_selection == 1:
         atomic_number = random.randint(1, 118)
-        element = peroidic_table(atomic_number)
+        element = periodic_table(atomic_number)
         print("\n")
         print("What is the element with an atomic number of " + str(atomic_number) + "?")
         answer = input("Type your answer here: ").lower()
