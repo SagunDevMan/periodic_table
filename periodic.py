@@ -20,6 +20,7 @@
             else, give the user the correct answer and ask another question
 '''
 # Program starts here
+import time
 import random
 from table import periodic_table
 
@@ -59,6 +60,7 @@ while exit_value == 0:
             answer = ' '
             print("\n")
             while answer != 'x':
+                start_time = time.time()
                 # Generate a random number from (1, 118) inclusive.
                 atomic_number = random.randint(starting_number, ending_number)
                 # peridoic_table refers to the function in table.py
@@ -70,7 +72,19 @@ while exit_value == 0:
                 
                 # Exits the questions if user types in 'x'
                 if answer == 'x':
+                    end_time = time.time()
+                    test_time = (end_time - start_time)
+                    
                     print("You got", score, "out of", question, "right!")
+
+                    # Check if test_time is more than 60 seconds, if it is then calculate for minutes
+                    if test_time > 60:
+                        test_min = test_time / 60
+                        test_seconds = test_time % 60
+                        print("The test time was", int(test_min), "mins and", int(test_seconds), "seconds")
+                    else:
+                        print("The test time was", int(test_time), "seconds")
+                        
                     print("Exiting...")
                     
                 # elif the answer is equal to the element, say you are correct and give them +1 score
