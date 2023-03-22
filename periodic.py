@@ -36,87 +36,91 @@ while exit_value == 0:
     print("Welcome to Sagun's Periodic Table Program")
     print("-" * 50)
     print("""1. Start\n2. Instructions\n3. Exit""")
-    menu_selection = int(input("Choose your menu selection (1 - 3): "))
+    # If the input results in a ValueError, such as user inputs "abc", it will tell the user there is an error and rerun the loop.
+    try:
+        menu_selection = int(input("Choose your menu selection (1 - 3): "))
 
-# Procress
+    # Procress
 
-    # If the menu selection is 1, then start the program
-    if menu_selection == 1:
-        
-        # Let the user choose the range
-        print("\n")
-        print("Ending range cannot be less than starting range!")
-        starting_number = int(input("Enter the periodic starting range (1 - 118): "))
-        ending_number = int(input("Enter the periodic ending range (1 - 118): "))
-        
-        # If starting_number is greater than 118 or less than 1, or ending_number is greater than 118 or less than 1, then end the program
-        if (starting_number < 1 or starting_number > 118) or (ending_number < 1 or ending_number > 118):
-            print("Invalid range, choose a range between 1 - 118")
-            print("\n")
+        # If the menu selection is 1, then start the program
+        if menu_selection == 1:
             
-        # Else, contiune running the program    
-        else:
-            
-            answer = ' '
+            # Let the user choose the range
             print("\n")
-            while answer != 'x':
-                start_time = time.time()
-                # Generate a random number from (1, 118) inclusive.
-                atomic_number = random.randint(starting_number, ending_number)
-                # peridoic_table refers to the function in table.py
-                element = periodic_table(atomic_number)
-                print("-" * 50)
-                print("What is the element with an atomic number of " + str(atomic_number) + "?")
-                answer = input("Type your answer here, (type x for exit): ").lower()
+            print("Ending range cannot be less than starting range!")
+            starting_number = int(input("Enter the periodic starting range (1 - 118): "))
+            ending_number = int(input("Enter the periodic ending range (1 - 118): "))
+            
+            # If starting_number is greater than 118 or less than 1, or ending_number is greater than 118 or less than 1, then end the program
+            if (starting_number < 1 or starting_number > 118) or (ending_number < 1 or ending_number > 118):
+                print("Invalid range, choose a range between 1 - 118")
                 print("\n")
                 
-                # Exits the questions if user types in 'x'
-                if answer == 'x':
-                    end_time = time.time()
-                    test_time = (end_time - start_time)
-                    
-                    print("You got", score, "out of", question, "right!")
-
-                    # Check if test_time is more than 60 seconds, if it is then calculate for minutes
-                    if test_time > 60:
-                        test_min = test_time / 60
-                        test_seconds = test_time % 60
-                        print("The test time was", int(test_min), "mins and", int(test_seconds), "seconds")
-                    else:
-                        print("The test time was", int(test_time), "seconds")
-                        
-                    print("Exiting...")
-                    
-                # elif the answer is equal to the element, say you are correct and give them +1 score
-                elif answer == element:
-                    question += 1
-                    score += 1
-                    print("Your answer is correct!")
-                    print("You have", score, "out of", question, "right!")
-                    
-                # Else the user it's wrong with the correct answer
-                else:
-                    question += 1
-                    print("You got it wrong! The correct answer is", element.capitalize())
-                    
-                    print("\nYou have", score, "out of", question, "right!")
-                    print("Keep going you got this!")
+            # Else, contiune running the program    
+            else:
+                
+                answer = ' '
                 print("\n")
-            
-    # If the menu selection is 2, then give instructions    
-    elif menu_selection == 2:
-        print("""
-Go to (website) for instructions!
+                while answer != 'x':
+                    start_time = time.time()
+                    # Generate a random number from (1, 118) inclusive.
+                    atomic_number = random.randint(starting_number, ending_number)
+                    # peridoic_table refers to the function in table.py
+                    element = periodic_table(atomic_number)
+                    print("-" * 50)
+                    print("What is the element with an atomic number of " + str(atomic_number) + "?")
+                    answer = input("Type your answer here, (type x for exit): ").lower()
+                    print("\n")
+                    
+                    # Exits the questions if user types in 'x'
+                    if answer == 'x':
+                        end_time = time.time()
+                        test_time = (end_time - start_time)
+                        
+                        print("You got", score, "out of", question, "right!")
 
-""")
+                        # Check if test_time is more than 60 seconds, if it is then calculate for minutes
+                        if test_time > 60:
+                            test_min = test_time / 60
+                            test_seconds = test_time % 60
+                            print("The test time was", int(test_min), "mins and", int(test_seconds), "seconds")
+                        else:
+                            print("The test time was", int(test_time), "seconds")
+                            
+                        print("Exiting...")
+                        
+                    # elif the answer is equal to the element, say you are correct and give them +1 score
+                    elif answer == element:
+                        question += 1
+                        score += 1
+                        print("Your answer is correct!")
+                        print("You have", score, "out of", question, "right!")
+                        
+                    # Else the user it's wrong with the correct answer
+                    else:
+                        question += 1
+                        print("You got it wrong! The correct answer is", element.capitalize())
+                        
+                        print("\nYou have", score, "out of", question, "right!")
+                        print("Keep going you got this!")
+                    print("\n")
+                
+        # If the menu selection is 2, then give instructions    
+        elif menu_selection == 2:
+            print("""
+    Go to (website) for instructions!
 
-    # If menu selection is 3, exit the program   
-    elif menu_selection == 3:
-        print("Exiting Program...")
-        exit_value = 1
+    """)
 
-    # Else, print in valid number
-    else:
-        print("Invalid number!")
+        # If menu selection is 3, exit the program   
+        elif menu_selection == 3:
+            print("Exiting Program...")
+            exit_value = 1
+
+        # Else, print in valid number
+        else:
+            print("Invalid number!")
+    except ValueError:
+        print("\nPlease only input a number (1-3)!\n")
     
     
