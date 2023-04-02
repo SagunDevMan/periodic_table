@@ -3,7 +3,7 @@
 # Author: SD
 # Date: 3/3/2023
 #------------------------------------------
-'''
+''' {Outdated}
     Problem: To make a periodic table program
     Input: Periodic Table Answer
     Process: Compute whether the answer is correct or not
@@ -119,7 +119,7 @@ while exit_value == 0:
 
         # Else, print in valid number
         else:
-            print("Invalid number!")
+            print("\nInvalid number!\n")
     except ValueError:
         print("\nPlease only input a number (1-3)!\n")
     
